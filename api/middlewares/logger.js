@@ -4,6 +4,8 @@ import fs, { promises as fsPromises } from "fs";
 import path from "path";
 
 export const logEvents = async (message, logFileName) => {
+  const __dirname = import.meta.dirname;
+  console.log(__dirname);
   const dateTime = format(new Date(), "yyyyMMdd\tHH:mm:ss");
   const logItem = `${dateTime}\t${uuid()}\t${message}\n`;
 
