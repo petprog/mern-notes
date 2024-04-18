@@ -1,16 +1,23 @@
 import express from "express";
 import cookieParser from "cookie-parser";
 import path from "path";
+import routes from "./routes/index.js";
+import { corsOptions } from "./configs/corsOprtions.js";
+import cors from "cors";
+import { errorHandler } from "./middlewares/errorHandler.js";
+import { logger } from "./middlewares/logger.js";
 
 export default function createApp() {
   const __dirname = path.resolve();
   const app = express();
+  app.use(logger);
+  app.use(cors(corsOptions));
 
   app.use(express.json());
 
   app.use(cookieParser());
 
-  // app.use(routes);
+  app.use(routes);
 
   app.use(express.static(path.join(__dirname, "/client/dist")));
 
@@ -27,6 +34,8 @@ export default function createApp() {
       message,
     });
   });
+
+  app.use(errorHandler);
 
   return app;
 }
