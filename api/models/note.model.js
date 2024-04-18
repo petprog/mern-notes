@@ -1,4 +1,4 @@
-import mongoose, { Schema } from "mongoose";
+import mongoose, { Schema, model } from "mongoose";
 import Inc from "mongoose-sequence";
 const AutoIncrement = Inc(mongoose);
 
@@ -19,7 +19,7 @@ const noteSchema = new Schema(
     },
     completed: {
       type: Boolean,
-      defualt: false,
+      default: false,
     },
   },
   {
@@ -33,6 +33,6 @@ noteSchema.plugin(AutoIncrement, {
   start_seq: 500,
 });
 
-const Note = mongoose.model("Note", noteSchema);
+const Note = model("Note", noteSchema);
 
 export default Note;

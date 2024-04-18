@@ -1,8 +1,18 @@
 import { Router } from "express";
+import {
+  createNewUser,
+  getAllUsers,
+  deleteUser,
+  updateUser,
+} from "../controllers/user.controller.js";
+
 const router = Router();
 
-router.get("/hello", (req, res) => {
-  res.send({ msg: "Hello World" });
-});
+router
+  .route("/")
+  .get(getAllUsers)
+  .post(createNewUser)
+  .patch(updateUser)
+  .delete(deleteUser);
 
 export default router;
