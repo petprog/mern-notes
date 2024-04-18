@@ -20,8 +20,23 @@ export const getAllUsers = asyncHandler(async (req, res) => {
 // @access Private
 export const createNewUser = asyncHandler(async (req, res) => {
   const { username, password, roles } = req.body;
-  if (!username || !password || !Array.isArray(roles) || !roles.length) {
+
+  if (!username || !password) {
     return res.status(400).send({ message: "All fields are required" });
+  }
+  const validRoles = ["Employee", "Manager", "Admin"];
+
+  if (roles) {
+    if (
+      !Array.isArray(roles) ||
+      !roles.length ||
+      roles.some((element) => typeof element !== "string") ||
+      roles.some((role) => !validRoles.includes(role))
+    ) {
+      return res.status(400).send({
+        message: "Roles field should be an array of strings and not empty",
+      });
+    }
   }
 
   // Check for duplicate

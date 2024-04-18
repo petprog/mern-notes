@@ -11,12 +11,10 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
-    roles: [
-      {
-        type: String,
-        default: "Employee",
-      },
-    ],
+    roles: {
+      type: Array,
+      default: ["Employee"],
+    },
     active: {
       type: Boolean,
       default: true,
