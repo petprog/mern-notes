@@ -26,6 +26,20 @@ const Welcome = () => {
           View User Settings
         </Link>
       </p>
+
+      <p>
+        <Link to="/dash/notes/new" className="before:content-['➜']">
+          {" "}
+          Add Notes
+        </Link>
+      </p>
+
+      <p>
+        <Link to="/dash/users/new" className="before:content-['➜']">
+          {" "}
+          Add New User
+        </Link>
+      </p>
     </section>
   );
 
