@@ -30,9 +30,9 @@ const NotesList = () => {
       : null;
 
     content = (
-      <table className="text-base w-full grid grid-cols-6 text-white gap-1 table--users">
+      <table className="text-base w-full grid md:grid-cols-maxi grid-cols-mini text-white gap-1 table--notes">
         <thead className="contents sticky top-0 z-10">
-          <tr>
+          <tr className="contents">
             <th
               scope="col"
               className="bg-white p-2 text-black text-left border note__status"
@@ -41,13 +41,13 @@ const NotesList = () => {
             </th>
             <th
               scope="col"
-              className="bg-white p-2 text-black text-left border note__created"
+              className="bg-white p-2 text-black text-left border max-md:hidden"
             >
               Created
             </th>
             <th
               scope="col"
-              className="bg-white p-2 text-black text-left border note__updated"
+              className="bg-white p-2 text-black text-left border max-md:hidden"
             >
               Updated
             </th>
@@ -59,7 +59,7 @@ const NotesList = () => {
             </th>
             <th
               scope="col"
-              className="bg-white p-2 text-black text-left border note__username"
+              className="bg-white p-2 text-black text-left border max-md:hidden "
             >
               Owner
             </th>
@@ -71,7 +71,7 @@ const NotesList = () => {
             </th>
           </tr>
         </thead>
-        <tbody>{tableContent}</tbody>
+        <tbody className="contents">{tableContent}</tbody>
       </table>
     );
   }

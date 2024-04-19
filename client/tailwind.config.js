@@ -24,6 +24,17 @@ export default {
       borderColor: {
         light: "#fff",
         dark: "#444",
+        "input-incomplete": "#foo",
+      },
+      outlineColor: {
+        "input-incomplete": "#foo",
+      },
+      gridTemplateColumns: {
+        // Simple 16 column grid
+        mini: "1fr,2fr,1fr",
+
+        // Complex site-specific column configuration
+        maxi: "1fr,1fr,1fr,2fr,1fr,1fr",
       },
     },
   },

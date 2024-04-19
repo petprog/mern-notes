@@ -33,16 +33,16 @@ const Note = ({ noteId }) => {
             <span className="text-status-open">Open</span>
           )}
         </td>
-        <td className="bg-white p-2 text-black text-left border note__created">
+        <td className="bg-white p-2 text-black text-left border max-md:hidden">
           {created}
         </td>
-        <td className="bg-white p-2 text-black text-left border note__updated">
+        <td className="bg-white p-2 text-black text-left border max-md:hidden">
           {updated}
         </td>
         <td className="bg-white p-2 text-black text-left border note__title">
           {note.title}
         </td>
-        <td className="bg-white p-2 text-black text-left border note__username">
+        <td className="bg-white p-2 text-black text-left border max-md:hidden">
           {note.username}
         </td>
 
