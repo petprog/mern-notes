@@ -112,6 +112,6 @@ export const deleteUser = asyncHandler(async (req, res) => {
   }
   const result = await user.deleteOne();
   return res.status(200).send({
-    message: `User with ${result.username} with ID ${result._id} deleted`,
+    message: `Username: ${user.username} with ID: ${user._id} deleted`,
   });
 });
