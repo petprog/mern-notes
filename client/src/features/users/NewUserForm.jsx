@@ -82,12 +82,12 @@ export default function NewUserForm() {
       <p className={errClass}>{error?.data?.message}</p>
 
       <form
-        className="flex flex-nowrap flex-col gap-3 max-w-3xl"
+        className="flex flex-nowrap flex-col gap-3 max-w-3xl p-3"
         onSubmit={onSaveUserClicked}
       >
         <div className="flex justify-between items-center">
           <h2 className="text-3xl">New User</h2>
-          <div className="flex justify-end items-center gap-2 absolute right-2">
+          <div className="flex justify-end items-center gap-2 right-2">
             <button className="text-2xl" title="Save" disabled={!canSave}>
               <FontAwesomeIcon icon={faSave} />
             </button>
