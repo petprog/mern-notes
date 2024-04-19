@@ -11,6 +11,7 @@ export default {
       backgroundColor: {
         "note-bg": "hsla(240, 64%, 27%, 0.65)",
         "table-bg": "#fff",
+        inactive: "lightgray",
       },
       textColor: {
         error: "firebrick",
