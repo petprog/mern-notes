@@ -30,7 +30,7 @@ const NotesList = () => {
       : null;
 
     content = (
-      <table className="text-base w-full grid md:grid-cols-maxi grid-cols-mini text-white gap-1 table--notes">
+      <table className="text-base w-full grid md:grid-cols-maxi grid-cols-mini text-white gap-1">
         <thead className="contents sticky top-0 z-10">
           <tr className="contents">
             <th

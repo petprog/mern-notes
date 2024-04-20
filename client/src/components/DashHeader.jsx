@@ -30,11 +30,11 @@ export default function DashHeader() {
     !NOTES_REGEX.test(pathname) &&
     !USERS_REGEX.test(pathname)
   ) {
-    dashClass = "max-w-[800px]";
+    dashClass = "max-w-3xl";
   }
 
   const logoutButton = (
-    <button className="icon-button" title="Logout" onClick={sendLogout}>
+    <button className="text-2xl" title="Logout" onClick={sendLogout}>
       <FontAwesomeIcon icon={faRightFromBracket} />
     </button>
   );
@@ -44,7 +44,7 @@ export default function DashHeader() {
         <Link to="/dash">
           <h1 className="text-xl md:text-2xl  font-semibold ">techNotes</h1>
         </Link>
-        <nav className="dash-header__nav">
+        <nav className="flex flex-nowrap justify-end gap-2 max-sm:gap-0 ">
           {/* add more buttons later */}
           {logoutButton}
         </nav>

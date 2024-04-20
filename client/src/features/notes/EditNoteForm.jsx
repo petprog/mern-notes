@@ -74,8 +74,12 @@ const EditNoteForm = ({ note, users }) => {
   });
 
   const errClass = isError || isDelError ? "text-error" : "offscreen";
-  const validTitleClass = !title ? "form__input--incomplete" : "";
-  const validTextClass = !text ? "form__input--incomplete" : "";
+  const validTitleClass = !title
+    ? "border outline border-input-incomplete outline-input-incomplete"
+    : "";
+  const validTextClass = !text
+    ? "border outline border-input-incomplete outline-input-incomplete"
+    : "";
 
   const errContent = (error?.data?.message || delerror?.data?.message) ?? "";
 

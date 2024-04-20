@@ -32,7 +32,7 @@ const UsersList = () => {
       : null;
 
     content = (
-      <table className="text-base w-full grid grid-cols-mini text-white gap-1 table--users">
+      <table className="text-base w-full grid grid-cols-mini text-white gap-1">
         <thead className="contents sticky top-0 z-10">
           <tr className="contents">
             <th
