@@ -5,8 +5,11 @@ import {
   deleteUser,
   updateUser,
 } from "../controllers/user.controller.js";
+import { verifyJWT } from "../middlewares/verifyJWT.js";
 
 const router = Router();
+
+router.use(verifyJWT);
 
 router
   .route("/")

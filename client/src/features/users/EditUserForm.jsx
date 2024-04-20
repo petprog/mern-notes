@@ -108,7 +108,7 @@ const EditUserForm = ({ user }) => {
         className="flex flex-nowrap flex-col gap-3 max-w-3xl p-3"
         onSubmit={(e) => e.preventDefault()}
       >
-        <div className="flex justify-between items-center w-fit">
+        <div className="flex justify-between items-center">
           <h2 className="text-3xl">Edit User</h2>
           <div className="flex justify-end items-center gap-2 right-2">
             <button

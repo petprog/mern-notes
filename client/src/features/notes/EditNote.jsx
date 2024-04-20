@@ -10,11 +10,12 @@ export default function EditNote() {
 
   const note = useSelector((state) => selectNoteById(state, id));
 
-  const content = users ? (
-    <EditNoteForm users={users} note={note} />
-  ) : (
-    <p>Loading...</p>
-  );
+  const content =
+    note && users ? (
+      <EditNoteForm users={users} note={note} />
+    ) : (
+      <p>Loading...</p>
+    );
 
   return content;
 }

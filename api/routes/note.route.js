@@ -5,8 +5,11 @@ import {
   updateNote,
   deleteNote,
 } from "../controllers/note.controller.js";
+import { verifyJWT } from "../middlewares/verifyJWT.js";
 
 const router = Router();
+
+router.use(verifyJWT);
 
 router
   .route("/")
