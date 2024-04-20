@@ -13,6 +13,7 @@ export const usersApiSlice = apiSlice.injectEndpoints({
       validateStatus: (response, result) => {
         return response.status === 200 && !result.isError;
       },
+      // convert accessing user._id to user.id
       transformResponse: (responseData) => {
         const loadedUsers = responseData.map((user) => {
           user.id = user._id;

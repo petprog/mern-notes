@@ -19,7 +19,7 @@ const NotesList = () => {
   if (isLoading) content = <p>Loading...</p>;
 
   if (isError) {
-    content = <p className="errmsg">{error?.data?.message}</p>;
+    content = <p className="text-error">{error?.data?.message}</p>;
   }
 
   if (isSuccess) {

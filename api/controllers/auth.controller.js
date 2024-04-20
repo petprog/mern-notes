@@ -23,7 +23,6 @@ export const loginUser = asyncHandler(async (req, res) => {
 
   if (!match) return res.status(401).json({ message: "Unauthorized" });
 
-  // TODO: change accesstoken to 10s
   const accessToken = jwt.sign(
     {
       UserInfo: {
@@ -32,7 +31,7 @@ export const loginUser = asyncHandler(async (req, res) => {
       },
     },
     process.env.ACCESS_TOKEN_SECRET,
-    { expiresIn: "15m" }
+    { expiresIn: "10s" }
   );
 
   const refreshToken = jwt.sign(
@@ -75,7 +74,6 @@ export const refreshToken = (req, res) => {
 
       if (!foundUser) return res.status(401).json({ message: "Unauthorized" });
 
-      // TODO: change accesstoken to 10s
       const accessToken = jwt.sign(
         {
           UserInfo: {
@@ -84,7 +82,7 @@ export const refreshToken = (req, res) => {
           },
         },
         process.env.ACCESS_TOKEN_SECRET,
-        { expiresIn: "15m" }
+        { expiresIn: "10s" }
       );
 
       res.json({ accessToken });
