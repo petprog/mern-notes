@@ -46,7 +46,7 @@ const NewNoteForm = ({ users }) => {
     );
   });
 
-  const errClass = isError ? "text-error" : "offscreen";
+  const errClass = isError ? "text-error" : "hidden";
   const validTitleClass = !title
     ? "border outline border-input-incomplete outline-input-incomplete"
     : "";

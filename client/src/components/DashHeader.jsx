@@ -22,7 +22,12 @@ export default function DashHeader() {
 
   if (isLoading) return <p>Logging Out...</p>;
 
-  if (isError) return <p>Error: {error.data?.message}</p>;
+  if (isError)
+    return (
+      <p className="inline-block bg-table-bg text-error p-1 mb-2">
+        Error: {error.data?.message}
+      </p>
+    );
 
   let dashClass = null;
   if (

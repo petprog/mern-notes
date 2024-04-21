@@ -5,12 +5,16 @@ import { useDispatch } from "react-redux";
 import { setCredentials } from "./authSlice";
 import { useLoginMutation } from "./authApiSlice";
 
+import usePersist from "../../hooks/usePersist";
+
 const Login = () => {
   const userRef = useRef();
   const errRef = useRef();
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  // TODO: remove before prod
+  const [username, setUsername] = useState("Petprog");
+  const [password, setPassword] = useState("12345678");
   const [errMsg, setErrMsg] = useState("");
+  const [persist, setPersist] = usePersist();
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -50,7 +54,7 @@ const Login = () => {
   const handleUserInput = (e) => setUsername(e.target.value);
   const handlePwdInput = (e) => setPassword(e.target.value);
 
-  const errClass = errMsg ? "text-error" : "offscreen";
+  const errClass = errMsg ? "text-error" : "hidden";
 
   if (isLoading) return <p>Loading...</p>;
 
@@ -65,7 +69,7 @@ const Login = () => {
         </p>
 
         <form
-          className="flex flex-nowrap flex-col gap-3 max-w-3xl "
+          className="flex flex-nowrap flex-col gap-4 max-w-3xl "
           onSubmit={handleSubmit}
         >
           <label htmlFor="username">Username:</label>
@@ -80,7 +84,9 @@ const Login = () => {
             required
           />
 
-          <label htmlFor="password">Password:</label>
+          <label className="mt-3" htmlFor="password">
+            Password:
+          </label>
           <input
             className="p-2 rounded-2xl text-gray-900"
             type="password"
@@ -89,7 +95,9 @@ const Login = () => {
             value={password}
             required
           />
-          <button className="p-2 rounded-2xl">Sign In</button>
+          <button className="p-2 font-bold text-slate-900 bg-white mt-6 rounded-2xl">
+            Sign In
+          </button>
         </form>
       </main>
       <footer>

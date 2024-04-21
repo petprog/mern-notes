@@ -73,7 +73,7 @@ const EditNoteForm = ({ note, users }) => {
     );
   });
 
-  const errClass = isError || isDelError ? "text-error" : "offscreen";
+  const errClass = isError || isDelError ? "text-error" : "hidden";
   const validTitleClass = !title
     ? "border outline border-input-incomplete outline-input-incomplete"
     : "";

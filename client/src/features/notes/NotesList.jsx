@@ -19,7 +19,11 @@ const NotesList = () => {
   if (isLoading) content = <p>Loading...</p>;
 
   if (isError) {
-    content = <p className="text-error">{error?.data?.message}</p>;
+    content = (
+      <p className="inline-block bg-table-bg text-error p-1 mb-2">
+        {error?.data?.message}
+      </p>
+    );
   }
 
   if (isSuccess) {
