@@ -53,6 +53,7 @@ const Login = () => {
 
   const handleUserInput = (e) => setUsername(e.target.value);
   const handlePwdInput = (e) => setPassword(e.target.value);
+  const handleToggle = () => setPersist((prev) => !prev);
 
   const errClass = errMsg ? "text-error" : "hidden";
 
@@ -98,6 +99,21 @@ const Login = () => {
           <button className="p-2 font-bold text-slate-900 bg-white mt-6 rounded-2xl">
             Sign In
           </button>
+
+          <label
+            className="form__label w-fit flex items-center gap-2"
+            htmlFor="persist"
+          >
+            <input
+              className="h-6 w-6"
+              id="persist"
+              name="completed"
+              type="checkbox"
+              checked={persist}
+              onChange={handleToggle}
+            />
+            Trust This Device
+          </label>
         </form>
       </main>
       <footer>
