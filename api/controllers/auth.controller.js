@@ -1,7 +1,7 @@
 import User from "../models/user.model.js";
-import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import asyncHandler from "express-async-handler";
+import { hashPassword, comparePassword } from "../utils/helpers.js";
 
 // @desc login user
 // @route POST /auth
@@ -19,7 +19,7 @@ export const loginUser = asyncHandler(async (req, res) => {
     return res.status(401).json({ message: "Unauthorized" });
   }
 
-  const match = await bcrypt.compare(password, foundUser.password);
+  const match = comparePassword(password, foundUser.password);
 
   if (!match) return res.status(401).json({ message: "Unauthorized" });
 
