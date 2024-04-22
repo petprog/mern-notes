@@ -14,7 +14,7 @@ const DashFooter = () => {
   if (pathname !== "/dash") {
     goHomeButton = (
       <button
-        className="w-auto h-auto text-base hover:scale-125 focus:scale-125 disabled:hidden"
+        className="w-auto h-auto text-base hover:scale-125 focus:scale-125 duration-200 disabled:hidden"
         title="Home"
         onClick={onGoHomeClicked}
       >

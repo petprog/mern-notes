@@ -34,7 +34,7 @@ const User = ({ userId }) => {
           className={`bg-white p-2 text-black text-center border ${cellStatus}`}
         >
           <button
-            className="text-2xl hover:scale-125 focus:scale-125"
+            className="text-2xl duration-200 hover:scale-125 focus:scale-125"
             onClick={handleEdit}
           >
             <FontAwesomeIcon icon={faPenToSquare} />

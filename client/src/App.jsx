@@ -22,9 +22,11 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Layout />}>
+              {/* public routes */}
               <Route index element={<Public />} />
               <Route path="login" element={<Login />} />
 
+              {/* Protected Routes */}
               <Route element={<PersistLogin />}>
                 <Route
                   element={
@@ -35,16 +37,10 @@ function App() {
                     <Route path="dash" element={<DashLayout />}>
                       <Route index element={<Welcome />} />
 
-                      <Route path="notes">
-                        <Route index element={<NotesList />} />
-                        <Route path=":id" element={<EditNote />} />
-                        <Route path="new" element={<NewNote />} />
-                      </Route>
-
                       <Route
                         element={
                           <RequireAuth
-                            allowedRoles={[ROLES.Admin, ROLES.Manager]}
+                            allowedRoles={[ROLES.Manager, ROLES.Admin]}
                           />
                         }
                       >
@@ -54,10 +50,18 @@ function App() {
                           <Route path="new" element={<NewUserForm />} />
                         </Route>
                       </Route>
+
+                      <Route path="notes">
+                        <Route index element={<NotesList />} />
+                        <Route path=":id" element={<EditNote />} />
+                        <Route path="new" element={<NewNote />} />
+                      </Route>
                     </Route>
+                    {/* End Dash */}
                   </Route>
                 </Route>
               </Route>
+              {/* End Protected Routes */}
             </Route>
           </Routes>
         </BrowserRouter>
