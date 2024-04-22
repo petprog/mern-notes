@@ -86,7 +86,12 @@ export default function DashHeader() {
   const visibleButtons = buttonMappings
     .filter(({ condition }) => condition)
     .map(({ onClick, icon, title }) => (
-      <button className="text-3xl" title={title} onClick={onClick} key={title}>
+      <button
+        className="text-3xl duration-200 hover:scale-125 focus:scale-125"
+        title={title}
+        onClick={onClick}
+        key={title}
+      >
         <FontAwesomeIcon icon={icon} />
       </button>
     ));
