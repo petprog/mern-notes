@@ -43,7 +43,7 @@ export default function DashHeader() {
   if (isError)
     return (
       <p className="inline-block bg-table-bg text-error p-1 mb-2">
-        Error: {error.data?.message}
+        Error: {error?.data?.message}
       </p>
     );
 

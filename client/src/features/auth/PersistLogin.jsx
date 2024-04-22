@@ -50,7 +50,7 @@ const PersistLogin = () => {
   } else if (isError) {
     content = (
       <p className="text-error  inline-block bg-table-bg p-1">
-        {error.data?.message}{" "}
+        {error?.data?.message}{" "}
         <Link to="/login" className="underline">
           Please login again
         </Link>
