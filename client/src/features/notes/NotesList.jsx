@@ -1,7 +1,9 @@
 import { useGetNotesQuery } from "./notesApiSlice";
 import Note from "./Note";
+import useAuth from "../../hooks/useAuth";
 
 const NotesList = () => {
+  const { username, isManager, isAdmin } = useAuth();
   const {
     data: notes,
     isLoading,
@@ -14,12 +16,10 @@ const NotesList = () => {
     refetchOnMountOrArgChange: true,
   });
 
-  let content;
-
-  if (isLoading) content = <p>Loading...</p>;
+  if (isLoading) return <p>Loading...</p>;
 
   if (isError) {
-    content = (
+    return (
       <p className="inline-block bg-table-bg text-error p-1 mb-2">
         {error?.data?.message}
       </p>
@@ -27,13 +27,17 @@ const NotesList = () => {
   }
 
   if (isSuccess) {
-    const { ids } = notes;
+    const { ids, entities } = notes;
+    const filteredIds =
+      isManager || isAdmin
+        ? ids
+        : ids.filter((noteId) => entities[noteId].username === username);
 
-    const tableContent = ids?.length
-      ? ids.map((noteId) => <Note key={noteId} noteId={noteId} />)
-      : null;
+    const tableContent = filteredIds.map((noteId) => (
+      <Note key={noteId} noteId={noteId} />
+    ));
 
-    content = (
+    return (
       <table className="text-base w-full grid md:grid-cols-maxi grid-cols-mini text-white gap-1">
         <thead className="contents sticky top-0 z-10">
           <tr className="contents">
@@ -63,7 +67,7 @@ const NotesList = () => {
             </th>
             <th
               scope="col"
-              className="bg-white p-2 text-black text-left border max-md:hidden "
+              className="bg-white p-2 text-black text-left border max-md:hidden"
             >
               Owner
             </th>
@@ -79,7 +83,6 @@ const NotesList = () => {
       </table>
     );
   }
-
-  return content;
 };
+
 export default NotesList;
