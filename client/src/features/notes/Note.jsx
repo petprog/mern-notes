@@ -47,7 +47,7 @@ const Note = ({ noteId }) => {
         </td>
 
         <td className="bg-white p-2 text-black text-left border">
-          <button className="text-2xl p-1 text-white" onClick={handleEdit}>
+          <button className="text-2xl p-" onClick={handleEdit}>
             <FontAwesomeIcon icon={faPenToSquare} />
           </button>
         </td>

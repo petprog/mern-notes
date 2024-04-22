@@ -1,4 +1,4 @@
-import { Outlet, Link } from "react-router-dom";
+import { Outlet, Link, useNavigate } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import { useRefreshMutation } from "./authApiSlice";
 import usePersist from "../../hooks/usePersist";
@@ -9,6 +9,7 @@ const PersistLogin = () => {
   const [persist] = usePersist();
   const token = useSelector(selectCurrentToken);
   const effectRan = useRef(false);
+  const navigate = useNavigate();
   const [trueSuccess, setTrueSuccess] = useState(false);
   const [refresh, { isUninitialized, isLoading, isSuccess, isError, error }] =
     useRefreshMutation();
@@ -36,6 +37,10 @@ const PersistLogin = () => {
       effectRan.current = true;
     };
   }, [persist, token, refresh]);
+
+  useEffect(() => {
+    if (isError && !token) navigate("/");
+  }, [isError, navigate, token]);
 
   let content;
   if (!persist) {
