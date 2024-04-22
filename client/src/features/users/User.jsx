@@ -33,7 +33,10 @@ const User = ({ userId }) => {
         <td
           className={`bg-white p-2 text-black text-center border ${cellStatus}`}
         >
-          <button className="icon-button p-1 text-2xl" onClick={handleEdit}>
+          <button
+            className="text-2xl hover:scale-125 focus:scale-125"
+            onClick={handleEdit}
+          >
             <FontAwesomeIcon icon={faPenToSquare} />
           </button>
         </td>

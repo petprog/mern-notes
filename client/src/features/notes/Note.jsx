@@ -46,8 +46,11 @@ const Note = ({ noteId }) => {
           {note.username}
         </td>
 
-        <td className="bg-white p-2 text-black text-left border">
-          <button className="text-2xl p-" onClick={handleEdit}>
+        <td className="bg-white p-2 text-black text-center border">
+          <button
+            className="text-2xl hover:scale-125 focus:scale-125"
+            onClick={handleEdit}
+          >
             <FontAwesomeIcon icon={faPenToSquare} />
           </button>
         </td>

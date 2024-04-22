@@ -6,7 +6,7 @@ export default function DashLayout() {
   return (
     <>
       <DashHeader />
-      <div className="py-3 px-2 flex-grow">
+      <div className="py-3 px-4 flex-grow">
         <Outlet />
       </div>
       <DashFooter />

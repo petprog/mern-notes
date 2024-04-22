@@ -88,7 +88,11 @@ export default function NewUserForm() {
         <div className="flex justify-between items-center">
           <h2 className="text-3xl">New User</h2>
           <div className="flex justify-end items-center gap-2 right-2">
-            <button className="text-2xl" title="Save" disabled={!canSave}>
+            <button
+              className="text-3xl hover:scale-125 focus:scale-125 duration-200"
+              title="Save"
+              disabled={!canSave}
+            >
               <FontAwesomeIcon icon={faSave} />
             </button>
           </div>

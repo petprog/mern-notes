@@ -34,7 +34,7 @@ export default function DashHeader() {
     !NOTES_REGEX.test(pathname) &&
     !USERS_REGEX.test(pathname)
   ) {
-    dashClass = "max-w-3xl";
+    dashClass = "max-w-3xl pr-0";
   }
 
   const onNavLinkClick = (path) => () => navigate(path);
@@ -97,8 +97,8 @@ export default function DashHeader() {
     ));
 
   return (
-    <header className="sticky top-0 z-10 bg-dark p-4 border-b bg-gray-900">
-      <div className={`flex justify-between items-center ${dashClass}`}>
+    <header className="sticky top-0 z-10 bg-dark p-4 pr-0 border-b">
+      <div className={`flex justify-between items-center pr-4 ${dashClass}`}>
         <Link to="/dash">
           <h1 className="text-xl md:text-2xl  font-semibold ">techNotes</h1>
         </Link>
