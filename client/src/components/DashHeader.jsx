@@ -100,7 +100,7 @@ export default function DashHeader() {
     <header className="sticky top-0 z-10 bg-dark p-4 pr-0 border-b">
       <div className={`flex justify-between items-center pr-4 ${dashClass}`}>
         <Link to="/dash">
-          <h1 className="text-xl md:text-2xl  font-semibold ">techNotes</h1>
+          <h1 className="text-xl md:text-2xl  font-semibold ">RheliusNotes</h1>
         </Link>
         <nav className="flex flex-nowrap justify-end gap-4 max-sm:gap-0 ">
           {visibleButtons}

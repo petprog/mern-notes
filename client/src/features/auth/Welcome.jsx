@@ -10,7 +10,7 @@ const Welcome = () => {
   });
 
   const goToMappings = [
-    { condition: true, path: "/dash/notes", label: "View techNotes" },
+    { condition: true, path: "/dash/notes", label: "View Notes" },
     {
       condition: isManager || isAdmin,
       path: "/dash/users",
