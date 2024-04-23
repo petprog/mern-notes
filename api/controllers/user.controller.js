@@ -1,6 +1,5 @@
 import User from "../models/user.model.js";
 import Note from "../models/note.model.js";
-import asyncHandler from "express-async-handler";
 import { hashPassword, comparePassword } from "../utils/helpers.js";
 
 // @desc Get all users

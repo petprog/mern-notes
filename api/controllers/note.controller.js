@@ -1,6 +1,5 @@
 import User from "../models/user.model.js";
 import Note from "../models/note.model.js";
-import asyncHandler from "express-async-handler";
 
 // @desc Get all notes
 // @route GET /notes
