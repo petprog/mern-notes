@@ -95,7 +95,7 @@ const EditNoteForm = ({ note, users }) => {
           <h2 className="text-3xl">Edit Note #{note.ticket}</h2>
           <div className="flex justify-end items-center gap-2 right-2">
             <button
-              className="text-2xl"
+              className="text-3xl hover:scale-125 focus:scale-125 duration-200"
               title="Save"
               onClick={onSaveNoteClicked}
               disabled={!canSave}
@@ -103,7 +103,7 @@ const EditNoteForm = ({ note, users }) => {
               <FontAwesomeIcon icon={faSave} />
             </button>
             <button
-              className="text-2xl"
+              className="text-3xl hover:scale-125 focus:scale-125 duration-200"
               title="Delete"
               onClick={onDeleteNoteClicked}
             >
