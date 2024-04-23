@@ -1,14 +1,19 @@
 import { useParams } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { selectUserById } from "./usersApiSlice";
+import { useGetUsersQuery } from "./usersApiSlice";
 import EditUserForm from "./EditUserForm";
+
+import Loading from "../../components/Loading";
 
 export default function EditUser() {
   const { id } = useParams();
 
-  const user = useSelector((state) => selectUserById(state, id));
+  const { user } = useGetUsersQuery("usersList", {
+    selectFromResult: ({ data }) => ({
+      user: data?.entities[id],
+    }),
+  });
 
-  const content = user ? <EditUserForm user={user} /> : <p>Loading...</p>;
+  const content = user ? <EditUserForm user={user} /> : <Loading />;
 
   return content;
 }

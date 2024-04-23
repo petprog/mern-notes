@@ -1,47 +1,51 @@
+/* eslint-disable react-refresh/only-export-components */
 /* eslint-disable react/prop-types */
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
 
-import { useSelector } from "react-redux";
-import { selectUserById } from "./usersApiSlice";
+import { useGetUsersQuery } from "./usersApiSlice";
+import { memo } from "react";
 
 const User = ({ userId }) => {
-  const user = useSelector((state) => selectUserById(state, userId));
-
   const navigate = useNavigate();
 
-  if (user) {
-    const handleEdit = () => navigate(`/dash/users/${userId}`);
+  const { user } = useGetUsersQuery("usersList", {
+    selectFromResult: ({ data }) => ({
+      user: data?.entities[userId],
+    }),
+  });
 
-    const userRolesString = user.roles.toString().replaceAll(",", ", ");
+  if (!user) return null;
 
-    const cellStatus = user.active ? "" : "bg-inactive";
+  const handleEdit = () => navigate(`/dash/users/${userId}`);
 
-    return (
-      <tr className="contents user">
-        <td
-          className={`bg-white p-2 text-black text-left border ${cellStatus}`}
+  const userRolesString = user.roles.toString().replaceAll(",", ", ");
+
+  const cellStatus = user.active ? "" : "bg-inactive";
+
+  return (
+    <tr className="contents user">
+      <td className={`bg-white p-2 text-black text-left border ${cellStatus}`}>
+        {user.username}
+      </td>
+      <td className={`bg-white p-2 text-black text-left border ${cellStatus}`}>
+        {userRolesString}
+      </td>
+      <td
+        className={`bg-white p-2 text-black text-center border ${cellStatus}`}
+      >
+        <button
+          className="text-2xl duration-200 hover:scale-125 focus:scale-125"
+          onClick={handleEdit}
         >
-          {user.username}
-        </td>
-        <td
-          className={`bg-white p-2 text-black text-left border ${cellStatus}`}
-        >
-          {userRolesString}
-        </td>
-        <td
-          className={`bg-white p-2 text-black text-center border ${cellStatus}`}
-        >
-          <button
-            className="text-2xl duration-200 hover:scale-125 focus:scale-125"
-            onClick={handleEdit}
-          >
-            <FontAwesomeIcon icon={faPenToSquare} />
-          </button>
-        </td>
-      </tr>
-    );
-  } else return null;
+          <FontAwesomeIcon icon={faPenToSquare} />
+        </button>
+      </td>
+    </tr>
+  );
 };
-export default User;
+
+const memoizedUser = memo(User);
+
+export default memoizedUser;

@@ -1,5 +1,6 @@
 import { useGetUsersQuery } from "./usersApiSlice.js";
 import User from "./User";
+import Loading from "../../components/Loading.jsx";
 const UsersList = () => {
   const {
     data: users,
@@ -7,7 +8,7 @@ const UsersList = () => {
     isSuccess,
     isError,
     error,
-  } = useGetUsersQuery(undefined, {
+  } = useGetUsersQuery("usersList", {
     pollingInterval: 60000,
     refetchOnFocus: true,
     refetchOnMountOrArgChange: true,
@@ -15,7 +16,7 @@ const UsersList = () => {
 
   let content;
 
-  if (isLoading) content = <p>Loading...</p>;
+  if (isLoading) content = <Loading />;
 
   if (isError) {
     content = (

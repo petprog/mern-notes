@@ -5,6 +5,7 @@ import { useRefreshMutation } from "./authApiSlice";
 import usePersist from "../../hooks/usePersist";
 import { useSelector } from "react-redux";
 import { selectCurrentToken } from "./authSlice";
+import Loading from "../../components/Loading";
 
 const PersistLogin = () => {
   const [persist] = usePersist();
@@ -47,7 +48,7 @@ const PersistLogin = () => {
   if (!persist) {
     content = <Outlet />;
   } else if (isLoading) {
-    content = <p>Loading...</p>;
+    content = <Loading />;
   } else if (isError) {
     content = (
       <p className="text-error  inline-block bg-table-bg p-1">
