@@ -1,12 +1,11 @@
 import User from "../models/user.model.js";
 import jwt from "jsonwebtoken";
-import asyncHandler from "express-async-handler";
-import { hashPassword, comparePassword } from "../utils/helpers.js";
+import { comparePassword } from "../utils/helpers.js";
 
 // @desc login user
 // @route POST /auth
 // @access Public
-export const loginUser = asyncHandler(async (req, res) => {
+export const loginUser = async (req, res) => {
   const { username, password } = req.body;
 
   if (!username || !password) {
@@ -50,7 +49,7 @@ export const loginUser = asyncHandler(async (req, res) => {
 
   // Send accessToken containing username and roles
   res.json({ accessToken });
-});
+};
 
 // @desc Refresh token
 // @route GET /auth/refresh
@@ -65,7 +64,7 @@ export const refreshToken = (req, res) => {
   jwt.verify(
     refreshToken,
     process.env.REFRESH_TOKEN_SECRET,
-    asyncHandler(async (err, decoded) => {
+    async (err, decoded) => {
       if (err) return res.status(403).json({ message: "Forbidden" });
 
       const foundUser = await User.findOne({
@@ -86,7 +85,7 @@ export const refreshToken = (req, res) => {
       );
 
       res.json({ accessToken });
-    })
+    }
   );
 };
 

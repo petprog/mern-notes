@@ -6,19 +6,19 @@ import { hashPassword, comparePassword } from "../utils/helpers.js";
 // @desc Get all users
 // @route GET /api/user
 // @access Private
-export const getAllUsers = asyncHandler(async (req, res) => {
+export const getAllUsers = async (req, res) => {
   const users = await User.find().select("-password").lean();
   if (!users || !users.length)
     res.status(400).send({ message: "No user found" });
   else {
     res.status(200).send(users);
   }
-});
+};
 
 // @desc Create new user
 // @route POST /api/user
 // @access Private
-export const createNewUser = asyncHandler(async (req, res) => {
+export const createNewUser = async (req, res) => {
   const { username, password, roles } = req.body;
 
   if (!username || !password) {
@@ -41,6 +41,7 @@ export const createNewUser = asyncHandler(async (req, res) => {
 
   // Check for duplicate
   const duplicate = await User.findOne({ username })
+    .collation({ locale: "en", strength: 2 })
     .select("-password")
     .lean()
     .exec();
@@ -56,12 +57,12 @@ export const createNewUser = asyncHandler(async (req, res) => {
   } else {
     res.status(400).json({ message: "Invalid user data received" });
   }
-});
+};
 
 // @desc Update a user
 // @route PATCH /api/user
 // @access Private
-export const updateUser = asyncHandler(async (req, res) => {
+export const updateUser = async (req, res) => {
   const { id, username, password, roles, active } = req.body;
   if (
     !id ||
@@ -78,8 +79,17 @@ export const updateUser = asyncHandler(async (req, res) => {
   }
 
   // Check for duplicate username with new username
-  const duplicate = await User.findOne({ username }).lean().exec();
-  if (duplicate && duplicate?._id.toString() !== id) {
+  const existingUserWithDuplicateUsername = await User.findOne({ username })
+    .collation({ locale: "en", strength: 2 })
+    .select("-password")
+    .lean()
+    .exec();
+
+  // if an existing user has the new username surely the user'id must not match the passed id
+  if (
+    existingUserWithDuplicateUsername &&
+    existingUserWithDuplicateUsername?._id.toString() !== id
+  ) {
     return res.status(409).send({ message: "Duplicate username" });
   }
   user.username = username;
@@ -92,12 +102,12 @@ export const updateUser = asyncHandler(async (req, res) => {
 
   const updatedUser = await user.save();
   res.status(200).send({ message: `${updatedUser.username} updated` });
-});
+};
 
 // @desc Delete a user
 // @route DELETE /api/user
 // @access Private
-export const deleteUser = asyncHandler(async (req, res) => {
+export const deleteUser = async (req, res) => {
   const { id } = req.body;
   if (!id) {
     return res.status(400).send({ message: "id field is required" });
@@ -114,4 +124,4 @@ export const deleteUser = asyncHandler(async (req, res) => {
   return res.status(200).send({
     message: `Username: ${user.username} with ID: ${user._id} deleted`,
   });
-});
+};
