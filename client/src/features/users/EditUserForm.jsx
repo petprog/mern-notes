@@ -112,7 +112,7 @@ const EditUserForm = ({ user }) => {
           <h2 className="text-3xl">Edit User</h2>
           <div className="flex justify-end items-center gap-2 right-2">
             <button
-              className="text-2xl"
+              className="text-3xl hover:scale-125 focus:scale-125 duration-200"
               title="Save"
               onClick={onSaveUserClicked}
               disabled={!canSave}
@@ -120,7 +120,7 @@ const EditUserForm = ({ user }) => {
               <FontAwesomeIcon icon={faSave} />
             </button>
             <button
-              className="text-2xl"
+              className="text-3xl hover:scale-125 focus:scale-125 duration-200"
               title="Delete"
               onClick={onDeleteUserClicked}
             >
